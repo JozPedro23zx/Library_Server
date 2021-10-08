@@ -7,8 +7,8 @@ class UserController{
         let emailUser = req.params.email ? req.params.email.replace(':', '') : "empty"
         let passwordUser = req.params.password ? req.params.password.replace(':', '') : "empty"
         
-        const userData = await UserServices.login(emailUser, passwordUser)
-        res.status(200).send({userData})
+        let data = await UserServices.login(emailUser, passwordUser)
+        res.status(200).send({data})
     }
 
 
