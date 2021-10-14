@@ -16,10 +16,10 @@ class BookController {
         try{
             if(req.params.method == "give"){
                 let response = await BookServices.register(req.params.user, req.params.book)
-                res.redirect(`http://localhost:5000/mistakeGetBook/${req.params.book}?mistake=${response}`)
+                res.redirect(`${process.env.CLIENT_HOST}/mistakeGetBook/${req.params.book}?mistake=${response}`)
             }else if(req.params.method == "giveBack"){
                 let response = await BookServices.deliver(req.params.user, req.params.book)
-                res.redirect(`http://localhost:5000/mistakeGetBook/${req.params.book}?mistake=${response}`)
+                res.redirect(`${process.env.CLIENT_HOST}/mistakeGetBook/${req.params.book}?mistake=${response}`)
             }else{
                 console.log("Error for get or give back the book")
             }

@@ -11,7 +11,7 @@ class ManagerController{
         
         if(!title){
             console.log("Missing title")
-            res.redirect("http://localhost:5000/")
+            res.redirect(`${process.env.CLIENT_HOST}/`)
         }
 
         if(group != "none"){cover = group.toLowerCase().replace(/\s/g, '') + sequence}
@@ -19,12 +19,12 @@ class ManagerController{
 
         let result = await ManagerServices.createOnlyLibrary(title, req.body.author, req.body.sinopse, quantity , req.body.genres, cover, group, req.body.allLibrary, libraryId)
         console.log(result)
-        res.redirect("http://localhost:5000/")
+        res.redirect(`${process.env.CLIENT_HOST}/`)
     }
 
     async createLibrary(req, res){
         let result = await ManagerServices.createLibrary(req.body.name, req.body.street, req.body.city)
-        res.redirect("http://localhost:5000/")
+        res.redirect(`${process.env.CLIENT_HOST}/`)
     }
 
     async createGroup(req, res){
@@ -32,7 +32,7 @@ class ManagerController{
         let cover = nameGroup.toLowerCase().replace(/\s/g, '')
 
         await ManagerServices.createGroupOfBooks(nameGroup, cover)
-        res.redirect("http://localhost:5000/")
+        res.redirect(`${process.env.CLIENT_HOST}/`)
     }
 }
 

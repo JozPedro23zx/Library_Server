@@ -25,10 +25,10 @@ class UserController{
         const verifyPassword = await UserServices.comparePassword(req.body.checkPassword, req.params.id)
         
         if(verifyPassword == false){
-            res.redirect(`http://localhost:5000/perfil/${req.params.id}?q=error`)
+            res.redirect(`${process.env.CLIENT_HOST}/perfil/${req.params.id}?q=error`)
         }else if(verifyPassword == true){
             await UserServices.updateDataUser(req.params.id, req.params.nameUser, req.params.email, req.params.password, req.params.location)
-            res.redirect("http://localhost:5000/")
+            res.redirect(`${process.env.CLIENT_HOST}/`)
         }
 
     }
@@ -68,14 +68,14 @@ class UserController{
         }
 
         if(mistake){
-            res.redirect(`http://localhost:5000/mistakeInput/register?mistake=${mistake}`)
+            res.redirect(`${process.env.CLIENT_HOST}/mistakeInput/register?mistake=${mistake}`)
         }
         else{
             password.toString()
     
             try{
                 await UserServices.registerUser(name, email, password, age, city)
-                res.redirect("http://localhost:5000/login")
+                res.redirect(`${process.env.CLIENT_HOST}/login`)
             }
             catch(error){
                 console.log(error)

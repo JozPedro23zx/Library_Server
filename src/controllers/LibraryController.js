@@ -22,14 +22,6 @@ class LibraryController{
     }
 }
 
-// async getLibraries(req, res){
-//     try{
-//         const libraryInfo = await LibraryServices.allLibraries()
-//         res.status(200).send({library: libraryInfo})
-//     }catch(error){
-//         console.log(error)
-//     }
-// }
 
 
 module.exports = new LibraryController()
