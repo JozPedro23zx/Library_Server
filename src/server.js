@@ -1,5 +1,8 @@
+const dotenv = require('dotenv')
 const express = require('express')
 const router = require('./routes')
+
+dotenv.config()
 
 const app = express()
 
@@ -8,11 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(router)
 
-let port = 8000
-app.listen(port, error =>{
+app.listen(process.env.PORT, error =>{
     if(error){
         console.log(error)
     }else{
-        console.log(`Api server running in port ${port}`)
+        console.log(`Api server running in port ${process.env.PORT}`)
     }
 })
