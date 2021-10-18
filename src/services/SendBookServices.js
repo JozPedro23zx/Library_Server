@@ -29,10 +29,10 @@ class SendBookServices{
             let index = allTitles.indexOf(genresArray[0].book)
             allTitles.splice(index, 1)
             
-            recommend = await Book.findAll({where:{title: allTitles, libraryId: atualLibrary}, limit: 4, order: 'random()'})
+            recommend = await Book.findAll({where:{title: allTitles, libraryId: atualLibrary}, limit: 4, order: Sequelize.literal('random()')})
             return recommend
         }
-        recommend = await Book.findAll({where:{libraryId: atualLibrary}, limit: 4, order: 'random()'})    
+        recommend = await Book.findAll({where:{libraryId: atualLibrary}, limit: 4, order: Sequelize.literal('random()')})    
         return recommend
     
     }
