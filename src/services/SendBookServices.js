@@ -32,7 +32,7 @@ class SendBookServices{
             recommend = await Book.findAll({where:{title: allTitles, libraryId: atualLibrary}, limit: 4, order: 'random()'})
             return recommend
         }
-        recommend = await Book.findAll({where:{libraryId: atualLibrary}, limit: 4, order: Sequelize.literal('random()')})    
+        recommend = await Book.findAll({where:{libraryId: atualLibrary}, limit: 4, order: 'random()'})    
         return recommend
     
     }
