@@ -68,7 +68,7 @@ class UserController{
         }
 
         if(mistake){
-            res.redirect(`${process.env.CLIENT_HOST}/mistakeInput/register?mistake=${mistake}`)
+            res.redirect(`${process.env.CLIENT_HOST}/mistakeRegister/register?mistake=${mistake}`)
         }
         else{
             password.toString()
